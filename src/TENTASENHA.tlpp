@@ -1,0 +1,29 @@
+#Include 'totvs.ch'
+
+
+/*/{Protheus.doc} U_TentaSenha
+    Programa de exemplo sobre laços de repetição
+    @type user function
+    @author Diego Santana
+    @since 07/02/2025
+    @version 1.0
+/*/
+Function U_TentaSenha()
+    Local cSenhaCorreta := '1234' as Character
+    Local cSenhaDigitada as Character
+    Local nTentativas := 0 as Numeric 
+
+    WHILE nTentativas < 3
+        cSenhaDigitada := AllTrim(FWInputBox("Informe a senha:", cSenhaDigitada))
+
+        IF cSenhaDigitada == cSenhaCorreta
+            MsgInfo("Acesso concedido!")
+            RETURN
+        ELSE
+            MsgAlert("Senha incorreta! Tentativa " + Str(nTentativas+1) + " de 3.")
+        ENDIF
+
+        nTentativas++
+    END
+    MsgStop("Acesso bloquado! N° Máximo de tentativas atingido.")
+Return
